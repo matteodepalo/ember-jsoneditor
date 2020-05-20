@@ -76,6 +76,7 @@ export default Component.extend({
       // https://balinterdi.com/blog/ember-dot-run-dot-bind/
       // assign internal change function to jsoneditor onChange
       options['onChange'] = bind(this, this._change);
+      options['onEvent'] = bind(this, this._event);
 
       // assign internal error function to jsoneditor onError
       options['onError'] = bind(this, this._error);
@@ -105,6 +106,8 @@ export default Component.extend({
   on change of contents
   */
   change: null,
+  
+  event: null,
 
   /**
    Set a callback method triggered when an error occurs.
@@ -151,6 +154,12 @@ export default Component.extend({
       }
     } catch (error) {
       this._error(error);
+    }
+  },
+  
+  _event(node, event) {
+    if (this.event) {
+      this.event(node, event)
     }
   },
 
