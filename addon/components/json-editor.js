@@ -147,7 +147,7 @@ export default Component.extend({
 
       // Trigger Change event
       if (this.change) {
-        this.change();
+        this.change(json);
       }
     } catch (error) {
       this._error(error);
