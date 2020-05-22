@@ -145,7 +145,7 @@ export default Component.extend({
       let json = editor.get();
       //
       this.set('_updating', true);
-      this.update('json', json);
+      this.set('json', json);
       this.set('_updating', false);
 
       // Trigger Change event
@@ -207,7 +207,7 @@ export default Component.extend({
   jsonDidChange: observer('json', function() {
     if (!this._updating) {
       let json = this.json;
-      this.editor.set(json);
+      this.editor.update(json);
     }
   }),
 
