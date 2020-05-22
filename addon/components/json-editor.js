@@ -145,12 +145,12 @@ export default Component.extend({
       let json = editor.get();
       //
       this.set('_updating', true);
-      this.set('json', json);
+      this.update('json', json);
       this.set('_updating', false);
 
       // Trigger Change event
       if (this.change) {
-        this.update(json);
+        this.change(json);
       }
     } catch (error) {
       this._error(error);
